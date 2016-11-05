@@ -9,10 +9,10 @@ namespace Commands.Match
 {
     public class AddMatch : ICommand
     {
-        public string RedDefender { get; set; }
-        public string RedAttacker { get; set; }
-        public string BlueAttacker { get; set; }
-        public string BlueDefender { get; set; }
+        public string RedDefenderId { get; set; }
+        public string RedAttackerId { get; set; }
+        public string BlueAttackerId { get; set; }
+        public string BlueDefenderId { get; set; }
         public int RedScore { get; set; }
         public int BlueScore { get; set; }
     }

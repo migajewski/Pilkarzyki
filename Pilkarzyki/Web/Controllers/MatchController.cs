@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Commands.Match;
+using CQRSCore.Commands;
+using Simple.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,21 +11,36 @@ namespace Web.Controllers
 {
     public class MatchController : Controller
     {
-        // GET: Match
-        public ActionResult Index()
+        private readonly ICommandBus commandBus;
+
+        public MatchController(ICommandBus commandBus)
         {
-            return View();
+            this.commandBus = commandBus;
         }
 
+        // GET: Match
         public ActionResult Add()
         {
-            return View();
+            var db = Database.Open();
+
+            var players = db.Players.All();
+
+            List<SelectListItem> listItems = new List<SelectListItem>();
+
+            foreach (var player in players)
+            {
+                listItems.Add(new SelectListItem() { Text = player.Name, Value = player.Id.ToString() });
+            }
+
+            return View(listItems);
         }
 
         [HttpPost]
-        public ActionResult Add()
+        public ActionResult Add(AddMatch command)
         {
-            return null;
+            commandBus.SendCommand(command);
+
+            return RedirectToAction("Index");
         }
     }
 }

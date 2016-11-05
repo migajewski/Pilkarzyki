@@ -1,5 +1,6 @@
 ﻿using Commands.Match;
 using CQRSCore.Commands;
+using Simple.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,18 @@ namespace CommandsHandlers.Match
     {
         public void Handle(AddMatch command)
         {
-            throw new NotImplementedException();
+            var db = Database.Open();
+
+            db.Match.Insert(
+                //RedDefenderId : command.RedDefenderId,
+                //RedAttackerId : command.RedAttackerId,
+                //BlueDefenderId : command.BlueDefenderId,
+                //BlueAttackerId : command.BlueAttackerId,
+                //RedScore : command.RedScore,
+                //BlueScore : command.BlueScore
+                command
+                );
+
         }
     }
 }

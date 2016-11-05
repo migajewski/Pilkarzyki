@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using CommandsHandlers.Match;
 using CQRSCore.Events;
+using Simple.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +50,14 @@ namespace Web
         private static void RegisterDependencyMappingOverrides(ContainerBuilder builder)
         {
             var assemblyType = typeof(EventBus).GetTypeInfo();
+            var commandsHandlersAssemblyType = typeof(AddMatchCommandHandler).GetTypeInfo();
 
             builder.RegisterAssemblyTypes(assemblyType.Assembly)
+            .AsImplementedInterfaces()
+            .InstancePerRequest();
+
+
+            builder.RegisterAssemblyTypes(commandsHandlersAssemblyType.Assembly)
             .AsImplementedInterfaces()
             .InstancePerRequest();
         }

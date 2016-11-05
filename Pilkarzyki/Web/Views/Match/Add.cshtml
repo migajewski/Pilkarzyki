@@ -1,0 +1,24 @@
+﻿@model List<SelectListItem>
+@{
+    ViewBag.Title = "Add";
+}
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>@Html.DropDownList("RedDefenderId", Model, new { @class = "form-control" })</td>
+            <td>Czerwoni</td>
+            <td >Niebiescy</td>
+            <td>@Html.DropDownList("BlueDefenderId", Model, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>@Html.DropDownList("RedAttackerId", Model, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("RedScore", null, new { @class = "form-control" })</td>
+            <td >@Html.TextBox("BlueScore", null, new { @class = "form-control" })</td>
+            <td>@Html.DropDownList("BlueAttackerId", Model, new { @class = "form-control" })</td>
+        </tr>
+    </table>
+
+
+    <input type="submit" class="form-control" />
+}
