@@ -16,12 +16,6 @@ namespace CommandsHandlers.Match
             var db = Database.Open();
 
             db.Match.Insert(
-                //RedDefenderId : command.RedDefenderId,
-                //RedAttackerId : command.RedAttackerId,
-                //BlueDefenderId : command.BlueDefenderId,
-                //BlueAttackerId : command.BlueAttackerId,
-                //RedScore : command.RedScore,
-                //BlueScore : command.BlueScore
                 command
                 );
 

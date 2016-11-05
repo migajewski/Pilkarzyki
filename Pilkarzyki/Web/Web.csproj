@@ -156,6 +156,10 @@
       <Project>{055EC2E7-AF57-4312-B8BB-EF24F08F6323}</Project>
       <Name>CommandsHandlers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommandsValidators\CommandsValidators.csproj">
+      <Project>{A82F2901-DA33-4ABB-896D-263A43C3D3F6}</Project>
+      <Name>CommandsValidators</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands\Commands.csproj">
       <Project>{30D4002F-7DEB-4ED9-A1D2-4343A5F502DD}</Project>
       <Name>Commands</Name>

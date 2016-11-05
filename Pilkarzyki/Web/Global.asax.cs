@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using CommandsHandlers.Match;
+using CommandsValidators.Match;
 using CQRSCore.Events;
 using Simple.Data;
 using System;
@@ -51,6 +52,7 @@ namespace Web
         {
             var assemblyType = typeof(EventBus).GetTypeInfo();
             var commandsHandlersAssemblyType = typeof(AddMatchCommandHandler).GetTypeInfo();
+            var valdiatorsAssemblyType = typeof(AddMatchPlayersIdsValidator).GetTypeInfo();
 
             builder.RegisterAssemblyTypes(assemblyType.Assembly)
             .AsImplementedInterfaces()
@@ -60,6 +62,10 @@ namespace Web
             builder.RegisterAssemblyTypes(commandsHandlersAssemblyType.Assembly)
             .AsImplementedInterfaces()
             .InstancePerRequest();
+
+            builder.RegisterAssemblyTypes(valdiatorsAssemblyType.Assembly)
+                .AsImplementedInterfaces()
+                .InstancePerRequest();
         }
     }
 
