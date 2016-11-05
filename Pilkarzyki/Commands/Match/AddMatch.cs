@@ -15,5 +15,11 @@ namespace Commands.Match
         public int BlueDefenderId { get; set; }
         public int RedScore { get; set; }
         public int BlueScore { get; set; }
+        public DateTime Date { get; private set; }
+
+        public AddMatch()
+        {
+            Date = DateTime.Now;
+        }
     }
 }

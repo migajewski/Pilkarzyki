@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Web.Models.MatchModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.RedTeam
+            </td>
+            <td>
+                @item.RedScore
+            </td>
+            <td>
+                @item.BlueScore
+            </td>
+            <td>
+                @item.BlueTeam
+            </td>
+        </tr>
+    }
+
+</table>

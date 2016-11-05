@@ -1,11 +1,13 @@
 ﻿using Commands.Match;
 using CQRSCore.Commands;
+using CQRSCore.Validators;
 using Simple.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -16,6 +18,13 @@ namespace Web.Controllers
         public MatchController(ICommandBus commandBus)
         {
             this.commandBus = commandBus;
+        }
+
+        public ActionResult Index()
+        {
+            IEnumerable<MatchModel> matches = Database.Open().MatchList.All();
+
+            return View(matches);
         }
 
         // GET: Match
@@ -38,9 +47,23 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Add(AddMatch command)
         {
-            commandBus.SendCommand(command);
+            try
+            {
 
+                commandBus.SendCommand(command);
+
+            }
+            catch (ValidationException ex)
+            {
+                return RedirectToAction("Error", "Match", new { message = ex.Message });
+                throw;
+            }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Error(string message)
+        {
+            return View(model : message );
         }
     }
 }

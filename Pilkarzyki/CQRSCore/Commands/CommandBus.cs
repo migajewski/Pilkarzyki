@@ -1,4 +1,5 @@
 ﻿using CommandsValidators;
+using CQRSCore.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,13 @@ namespace CQRSCore.Commands
 
             foreach (var validator in validators)
             {
-                if (!validator.Validate(command))
+                var result = validator.Validate(command);
+                if (!result.IsValid)
                 {
-                    throw new Exception(validator.GetType().Name);
+                    throw new ValidationException(result.Message);
                 }
             }
-
+            
             var handler = (IHandleCommand<T>)handlersFactory(typeof(T));
             handler.Handle(command);
         }

@@ -4,7 +4,7 @@
 }
 @using (Html.BeginForm())
 {
-    <table>
+    <table class="add">
         <tr>
             <td>@Html.DropDownList("RedDefenderId", Model, new { @class = "form-control" })</td>
             <td>Czerwoni</td>
@@ -20,5 +20,5 @@
     </table>
 
 
-    <input type="submit" class="form-control" />
+    <input type="submit" class="form-control btn-primary add" />
 }

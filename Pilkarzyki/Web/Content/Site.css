@@ -16,3 +16,16 @@ textarea {
     max-width: 280px;
 }
 
+.content {
+    width: 50%;
+    margin: 100px auto 0 auto;
+}
+
+table.add td {
+    padding: 5px;
+    text-align: center;
+}
+
+input.add {
+    margin: 15px;
+}
