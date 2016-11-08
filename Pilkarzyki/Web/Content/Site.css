@@ -29,3 +29,11 @@ table.add td {
 input.add {
     margin: 15px;
 }
+
+#red {
+    border-bottom: #a52a2a 3px solid;
+}
+
+#blue {
+    border-bottom: #1e90ff  3px solid;
+}
