@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Web.Models.MatchModel>
+﻿@model IEnumerable<Web.Models.TeamScoreModel>
 
 @{
     ViewBag.Title = "Hall of fame";
@@ -12,24 +12,17 @@
         <table class="table">
             <thead>
                 <tr>
-                    <td>
-                        Strzelec
-                    </td>
-                    <td id="red">
-                        Goli
-                    </td>
+                    <td colspan="2">Drużyna</td>
+                    <td id="red">Punkty</td>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @item.RedTeam
-                        </td>
-                        <td>
-                            @item.RedScore
-                        </td>
+                        <td>@item.Player1</td>
+                        <td>@item.Player2</td>
+                        <td>@item.SumScore</td>
                     </tr>
                 }
             </tbody>
