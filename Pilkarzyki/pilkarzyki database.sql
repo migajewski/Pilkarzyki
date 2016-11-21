@@ -33,6 +33,7 @@ create table match
 	RedScore INT,
 	BlueScore INT
 )
+go
 
 create view MatchList
 as
