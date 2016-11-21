@@ -24,7 +24,7 @@ namespace Web.Controllers
         {
             IEnumerable<MatchModel> matches = Database.Open().MatchList.All();
 
-            return View(matches);
+            return View(matches.Reverse());
         }
 
         // GET: Match
