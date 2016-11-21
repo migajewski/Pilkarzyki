@@ -26,6 +26,10 @@ table.add td {
     text-align: center;
 }
 
+.table {
+    text-align: center;
+}
+
 input.add {
     margin: 15px;
 }
