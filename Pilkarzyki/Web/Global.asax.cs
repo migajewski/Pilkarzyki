@@ -3,12 +3,7 @@ using Autofac.Integration.Mvc;
 using CommandsHandlers.Match;
 using CommandsValidators.Match;
 using CQRSCore.Events;
-using Simple.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 

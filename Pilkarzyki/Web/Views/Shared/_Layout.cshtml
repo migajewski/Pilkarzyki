@@ -17,12 +17,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Lista meczów", "Index", "Match", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Dodaj mecz", "Add", "Match", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("SockerPlay", "Index", "Match", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Lista meczów", "Index", "Match", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Dodaj mecz", "Add", "Match", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Statystyki", "HallOfFame", "Match", new { area = "" }, null)</li>
+                </ul>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
         </div>
     </div>
@@ -30,8 +35,7 @@
     <div class="container body-content content">
         @RenderBody()
         <hr />
-        <footer>
-        </footer>
+        <footer></footer>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>

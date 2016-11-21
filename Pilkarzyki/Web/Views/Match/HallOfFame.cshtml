@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Web.Models.MatchModel>
+
+@{
+    ViewBag.Title = "Hall of fame";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Ogólnie strzałów</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>
+                        Strzelec
+                    </td>
+                    <td id="red">
+                        Goli
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.RedTeam
+                        </td>
+                        <td>
+                            @item.RedScore
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
