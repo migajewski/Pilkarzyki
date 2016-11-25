@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Web.Models.TeamScoreModel>
+
+@{
+    ViewBag.Title = "Hall of fame";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Ogólnie strzałów</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="2">Drużyna</td>
+                    <td id="red">Punkty</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Player1</td>
+                        <td>@item.Player2</td>
+                        <td>@item.SumScore</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -2,29 +2,36 @@
 using CQRSCore.Commands;
 using CQRSCore.Validators;
 using Simple.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Web.Models;
 
 namespace Web.Controllers
 {
     public class MatchController : Controller
     {
-        private readonly ICommandBus commandBus;
+        private readonly ICommandBus _commandBus;
 
         public MatchController(ICommandBus commandBus)
         {
-            this.commandBus = commandBus;
+            this._commandBus = commandBus;
         }
 
         public ActionResult Index()
         {
             IEnumerable<MatchModel> matches = Database.Open().MatchList.All();
 
-            return View(matches);
+            return View(matches.Reverse());
+        }
+
+        public ActionResult HallOfFame()
+        {
+            IEnumerable<TeamScoreModel> scores = Database.Open().TeamScores.All();
+
+            // OrderBy tutaj, ponieważ SQL nie lubi OrderBy w widokach
+            return View(scores.OrderByDescending(x => x.SumScore));
         }
 
         // GET: Match
@@ -50,7 +57,7 @@ namespace Web.Controllers
             try
             {
 
-                commandBus.SendCommand(command);
+                _commandBus.SendCommand(command);
 
             }
             catch (ValidationException ex)
