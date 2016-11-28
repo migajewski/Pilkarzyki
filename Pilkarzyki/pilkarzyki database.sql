@@ -46,3 +46,22 @@ as
 	inner join Players pra on pra.Id = m.RedAttackerId
 )
 
+go
+
+create view TeamScores
+as
+(
+	select x.Player1, x.Player2, SUM(x.SumScore) as SumScore from (
+		select pbd.Name as Player1, pbe.Name as Player2, SUM(RedScore) as SumScore from Match m
+		inner join Players pbd on pbd.Id = m.RedAttackerId
+		inner join Players pbe on pbe.Id = m.RedDefenderId
+		group by pbd.Name, pbe.Name
+		union all
+		select pbd.Name as Player1, pbe.Name as Player2, SUM(BlueScore) as SumScore from Match m
+		inner join Players pbd on pbd.Id = m.BlueAttackerId
+		inner join Players pbe on pbe.Id = m.BlueDefenderId
+		group by pbd.Name, pbe.Name
+		) x
+	group by x.Player1, x.Player2
+)
+
